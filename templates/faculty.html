@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Faculty Portal</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Cloud Attendance System</h1>
+
+<h2>Add Student</h2>
+
+<form action="/add_student" method="POST">
+
+<input type="text" name="roll" placeholder="Roll No" required>
+
+<input type="text" name="name" placeholder="Student Name" required>
+
+<input type="text" name="department" placeholder="Department" required>
+
+<input type="number" name="semester" placeholder="Semester" required>
+
+<button>Add Student</button>
+
+</form>
+
+<hr>
+
+<h2>Mark Attendance</h2>
+
+<form action="/mark" method="POST">
+
+<input type="text" name="roll" placeholder="Roll No" required>
+
+<input type="text" name="name" placeholder="Student Name" required>
+
+<input type="text" name="subject" placeholder="Subject" required>
+
+<input type="date" name="date" required>
+
+<select name="status">
+<option>Present</option>
+<option>Absent</option>
+</select>
+
+<button>Save Attendance</button>
+
+</form>
+
+<hr>
+
+<h2>View Student</h2>
+
+<form onsubmit="event.preventDefault(); window.location='/student/'+roll.value;">
+<input id="roll" placeholder="Roll Number">
+<button>View</button>
+</form>
+
+</div>
+
+</body>
+</html>

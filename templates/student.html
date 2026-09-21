@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Student Attendance</h1>
+
+    <h2>{{ percentage }}%</h2>
+    <p><strong>Roll No:</strong> {{ roll }}</p>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Status</th>
+        </tr>
+
+        {% for r in records %}
+        <tr>
+            <td>{{ r.subject }}</td>
+            <td>{{ r.status }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <br>
+    <a href="/">← Back to Faculty Portal</a>
+
+</div>
+
+</body>
+</html>
