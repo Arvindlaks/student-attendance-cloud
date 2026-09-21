@@ -1,14 +1,18 @@
 from flask import Flask, render_template, request, redirect
 from google.cloud import firestore
 from google.oauth2 import service_account
+import os
+import json
 
-app = Flask(__name__)
-
-cred = service_account.Credentials.from_service_account_file(
-    "serviceAccountKey.json"
+service_account_info = json.loads(
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]
 )
-db = firestore.Client(credentials=cred, project=cred.project_id)
 
+cred = service_account.Credentials.from_service_account_info(
+    service_account_info
+)
+
+db = firestore.Client(credentials=cred, project=cred.project_id)
 @app.route("/")
 def home():
     return render_template("faculty.html")
