@@ -3,6 +3,7 @@ from google.cloud import firestore
 from google.oauth2 import service_account
 import os
 import json
+app = Flask(__name__)
 
 service_account_info = json.loads(
     os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]
